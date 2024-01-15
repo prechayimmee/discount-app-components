@@ -5,14 +5,30 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Install @changesets/cli
+        run: yarn add @changesets/cli@2.27.1
+
+      - name: Add changesets
+        run: yarn changeset add
+
+      - name: Commit changesets
+        run: git add . && git commit -m "Add changesets" || echo "No changesets to commit"
+
+      - name: Push changesets
+        run: git push origin HEAD:${{ github.ref }}
+
+      - name: Release packages
+        run: yarn release
         uses: actions/checkout@v2
 
       - name: Setup Node.js 16.17.0
