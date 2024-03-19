@@ -105,7 +105,7 @@
     "@size-limit/preset-small-lib": "^5.0.3",
     "@storybook/cli": "^7.3.2",
     "@storybook/react": "^7.3.2",
-    "@storybook/react-webpack5": "^7.3.2",
+    "@storybook/react-webpack5": "^8.0.1",
     "@types/d3-time-format": "^4.0.0",
     "@types/lodash": "^4.14.181",
     "@types/node": "^16.11.11",
